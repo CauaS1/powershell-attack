@@ -1,0 +1,7 @@
+services:
+  file-server:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
