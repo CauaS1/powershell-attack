@@ -1,9 +1,18 @@
-﻿Compress-Archive `
-    -Path "C:\Users\semne\Downloads\file1.txt",
-          "C:\Users\semne\Downloads\file2.txt" `
-    -DestinationPath "C:\Users\semne\Downloads\HarmlessFolder\payload.zip"
+﻿$path = "C://Users/semne"
+$path = "C://Users/semne/Downloads"
+$cont = Get-ChildItem $path -Recurse -Filter *.txt
 
-$file = [System.IO.File]::ReadAllBytes("C:\Users\semne\Downloads\HarmlessFolder\payload.zip")
+#$directories = $cont.DirectoryName | Sort-Object -Unique
+
+foreach ($file in $cont) {
+    Copy-Item -Path $file.FullName -Destination 'C://Users/semne/Downloads/novo'
+}
+
+Compress-Archive `
+    -Path "C://Users/semne/Downloads/novo" `
+    -DestinationPath "C:\Users\semne\Downloads\antigo\payload.zip"
+
+$file = [System.IO.File]::ReadAllBytes("C:\Users\semne\Downloads\antigo\payload.zip")
 $encoded = [Convert]::ToBase64String($file)
 #$encoded | Set-Content "C:\Users\semne\Downloads\HarmlessFolder\encoded.txt" -NoNewline
 
