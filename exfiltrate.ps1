@@ -1,5 +1,5 @@
-﻿$path = "C://Users/semne"
-$path = "C://Users/semne/Downloads"
+﻿$username = $env:USERNAME
+$path = "C:\Users\$username/Downloads"
 $cont = Get-ChildItem $path -Recurse -Filter *.txt
 
 #$directories = $cont.DirectoryName | Sort-Object -Unique

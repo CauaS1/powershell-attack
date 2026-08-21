@@ -1,4 +1,6 @@
-$path = "C:\Users\semne\passd.txt"
+$username = $env:USERNAME
+$path = "C:\Users\$username"
+
 $who = whoami
 $locaUser = Get-LocalUser
 $queryUser = query User
@@ -10,9 +12,7 @@ if (-not (Test-Path -Path $path)) {
     Write-Warning "It does not exist"
 
     New-Item -Path "C:\Users\semne" -Name "passd.txt" -ItemType File
-    Add-Content -Path "C:\Users\semne\passd.txt" -Value "This is the possible password for everything: passejrkjt
-    
-    " 
+ 
     Add-Content -Path "C:\Users\semne\passd.txt" -Value "
     USER & GROUPS INFORMATION ==================================================
     
